@@ -35,8 +35,10 @@ import { useState } from "react";
           }
  return (
     <form className="expense-form" onSubmit={handleSubmit}>
+      <label for="name">Name</label>
      <input
         type="text"
+        id="name"
         placeholder="Title"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
