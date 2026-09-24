@@ -52,6 +52,7 @@ import { useState } from "react";
       <option>Transport</option>
       <option>Bills</option>
       <option>Fun</option>
+      <option>Feed</option>
       <option>Other</option>
     </select>
     <label className="checkbox-label">
