@@ -3,7 +3,7 @@ function Summary({ total, count, topCategory}) {
     <div className="summary">
       <div className="summary-card">
         <p className="summary-label">Total</p>
-        <p className="summary-value">{total}ETB</p>
+        <p className="summary-value">ETB: {total}</p>
       </div>
       <div className="summary-card">
         <p className="summary-label">Expenses</p>
