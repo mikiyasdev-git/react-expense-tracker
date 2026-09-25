@@ -32,25 +32,13 @@ function ExpenseItem({ id }) {
     >
       <span>{expense.title}</span>
 
-      <span className="expense-category">
-        {expense.category}
-      </span>
+      <span className="expense-category">{expense.category}</span>
 
-      {isHigh && (
-        <span className="expense-flag">
-          High
-        </span>
+      {isHigh && (<span className="expense-flag"> High </span>
       )}
-
-      {isRecurring && (
-        <span className="expense-recurring">
-          Monthly
-        </span>
+      {isRecurring && ( <span className="expense-recurring"> Monthly </span>
       )}
-
-      <span className="expense-amount">
-        {expense.amount} ETB
-      </span>
+       <span className="expense-amount"> {expense.amount} ETB </span>
 
       <button
         className="expense-delete"
