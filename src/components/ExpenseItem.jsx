@@ -27,9 +27,7 @@ function ExpenseItem({ id }) {
   return (
     <li
       className={
-        isHigh
-          ? "expense-item expense-item-high"
-          : "expense-item"
+        isHigh ? "expense-item expense-item-high" : "expense-item"
       }
     >
       <span>{expense.title}</span>
