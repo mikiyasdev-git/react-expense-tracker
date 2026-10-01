@@ -1,5 +1,13 @@
-function Header({ appName }) {
-  return <h1 className="title">{appName}</h1>;
+function Header({ appName = "Finance Manager" }) {
+  return (
+    <header>
+      <h1>{appName}</h1>
+
+      <div>
+        <span>Personal Finance</span>
+      </div>
+    </header>
+  );
 }
 
 export default Header;

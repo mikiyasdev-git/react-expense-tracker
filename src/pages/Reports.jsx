@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {
-  getDashboardSummary,
-  getDashboardTransactions,
-} from "../api/dashboardApi";
+  getReportSummary,
+  getReportTransactions,
+} from "../api/reportApi";
 
-function Dashboard() {
+function Reports() {
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
 
@@ -12,15 +12,15 @@ function Dashboard() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    async function loadDashboard() {
+    async function loadReports() {
       try {
         setIsLoading(true);
         setError("");
 
         const [summaryResponse, transactionsResponse] =
           await Promise.all([
-            getDashboardSummary(),
-            getDashboardTransactions(),
+            getReportSummary(),
+            getReportTransactions(),
           ]);
 
         setSummary(summaryResponse.data);
@@ -29,18 +29,18 @@ function Dashboard() {
         setError(
           err.response?.data?.message ||
             err.message ||
-            "Failed to load dashboard."
+            "Failed to load reports."
         );
       } finally {
         setIsLoading(false);
       }
     }
 
-    loadDashboard();
+    loadReports();
   }, []);
 
   if (isLoading) {
-    return <p>Loading dashboard...</p>;
+    return <p>Loading reports...</p>;
   }
 
   if (error) {
@@ -48,35 +48,41 @@ function Dashboard() {
   }
 
   return (
-    <main>
-      <h1>Dashboard</h1>
+    <section>
+      <h2>Reports</h2>
 
       {/* Summary */}
-      <section>
+      <div>
         <div>
           <h3>Total Income</h3>
-          <p>{Number(summary?.total_income || 0).toLocaleString()} ETB</p>
+          <p>
+            {Number(summary?.total_income || 0).toLocaleString()} ETB
+          </p>
         </div>
 
         <div>
           <h3>Total Expense</h3>
-          <p>{Number(summary?.total_expense || 0).toLocaleString()} ETB</p>
+          <p>
+            {Number(summary?.total_expense || 0).toLocaleString()} ETB
+          </p>
         </div>
 
         <div>
           <h3>Balance</h3>
-          <p>{Number(summary?.balance || 0).toLocaleString()} ETB</p>
+          <p>
+            {Number(summary?.balance || 0).toLocaleString()} ETB
+          </p>
         </div>
 
         <div>
           <h3>Transactions</h3>
           <p>{summary?.transaction_count || 0}</p>
         </div>
-      </section>
+      </div>
 
-      {/* Recent Transactions */}
-      <section>
-        <h2>Recent Transactions</h2>
+      {/* Transaction Report */}
+      <div>
+        <h3>Transaction Report</h3>
 
         {transactions.length === 0 ? (
           <p>No transactions found.</p>
@@ -92,7 +98,7 @@ function Dashboard() {
             </thead>
 
             <tbody>
-              {transactions.slice(0, 5).map((transaction) => (
+              {transactions.map((transaction) => (
                 <tr key={transaction.id}>
                   <td>
                     {new Date(
@@ -114,9 +120,9 @@ function Dashboard() {
             </tbody>
           </table>
         )}
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }
 
-export default Dashboard;
+export default Reports;
