@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import {
   getReportSummary,
   getReportTransactions,
-} from "../api/ReportApi";
+} from "../api/reportApi";
 
 function Reports() {
   const [summary, setSummary] = useState(null);
