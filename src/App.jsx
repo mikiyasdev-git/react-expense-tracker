@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import Accounts from "./pages/Accounts";
 import Categories from "./pages/Categories";
-import Transaction from "./pages/Transaction";
+import Transactions from "./pages/Transactions";
 import Budgets from "./pages/Budgets";
 import Reports from "./pages/Reports";
 import Login from "./pages/Login";
@@ -52,7 +52,7 @@ function App() {
 
           <Route
             path="/transactions"
-            element={<Transaction />}
+            element={<Transactions />}
           />
           <Route
             path="/budgets"
