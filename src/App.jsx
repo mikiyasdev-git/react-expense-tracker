@@ -13,6 +13,7 @@ import Budgets from "./pages/Budgets";
 import Reports from "./pages/Reports";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -58,6 +59,8 @@ function App() {
             element={<Budgets />}
           />
           <Route path="/reports" element={<Reports />} />
+          {/* Catch-all: unknown URLs */}
+        <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
 
